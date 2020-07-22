@@ -1,18 +1,15 @@
 <template>
   <div id="app">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <guidance />
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import Guidance from './components/Guidance'
 export default {
   name: 'App',
   components: {
     HelloWorld,
-    Guidance
   }
 }
 </script>
@@ -24,6 +21,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

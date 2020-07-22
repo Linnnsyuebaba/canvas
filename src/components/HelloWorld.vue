@@ -1,25 +1,46 @@
 <template>
   <div class="content">
-    <div class="header" id="header">header</div>
-    <div class="middle">
-      <div class="left" id="left">left</div>
-      <div class="right" id="right">right</div>
+    <div class="header"
+         id="header" ref="header">header</div>
+    <div class="middle"
+         ref="middle">
+      <div class="left"
+           ref="left"
+           id="left">left</div>
+      <div class="right"
+           id="right">right</div>
     </div>
     <ul class="right-slide">
-      <li class="item" id="item-1"></li>
-      <li class="item" id="item-2"></li>
-      <li class="item" id="item-3"></li>
-      <li class="item" id="item-4"></li>
-      <li class="item" id="item-5"></li>
-      <li class="item" id="item-6"></li>
+      <li class="item"
+          id="item-1"></li>
+      <li class="item"
+          id="item-2"></li>
+      <li class="item"
+          id="item-3"></li>
+      <li class="item"
+          id="item-4"></li>
+      <li class="item"
+          id="item-5"></li>
+      <li class="item"
+          id="item-6"></li>
     </ul>
   </div>
 </template>
 
 <script>
+import Draggabilly from 'draggabilly'
+import Drag from '../commom/drag'
 export default {
   name: 'HelloWorld',
-  props: {},
+  mounted () {
+    new Draggabilly(this.$refs.left, {
+      containment: this.$refs.middle
+    })
+    const drag =new Drag(this.$refs.header, {
+      containment: 'body'
+    })
+    console.log(drag.position)
+  }
 };
 </script>
 
@@ -33,19 +54,23 @@ export default {
   font-family: Arial, Helvetica, sans-serif;
 }
 .header {
-  width: 100%;
+  position: absolute;
+  top: 100px;
+  left: 50px;
+  width: 90px;
   height: 162px;
   line-height: 162px;
   background-color: #ffbfbf;
   margin-bottom: 20px;
 }
 .middle {
+  height: 90vh;
   display: flex;
   align-items: flex-end;
 }
 .left {
   width: 300px;
-  height: 70vh;
+  height: 60vh;
   line-height: 80vh;
   background-color: blue;
 }
@@ -59,7 +84,7 @@ export default {
 .right-slide {
   position: absolute;
   right: 20px;
-  top: 300px;
+  top: 200px;
 }
 .item {
   list-style: none;
